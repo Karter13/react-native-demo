@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
-import {Navbar} from "./src/Navbar";
-import {AddTodo} from "./src/AddTodo";
-import {Todo} from "./src/Todo";
+import {StyleSheet, View} from 'react-native';
+import {Navbar} from "./src/components/Navbar";
+import {MainScreen} from "./src/screens/MainScreen";
+
 
 export default function App() {
     const [todos, setTodos] = useState([]);
@@ -21,26 +21,12 @@ export default function App() {
         setTodos(prev => prev.filter(todo => todo.id !== id))
     };
 
-
     return (
         <View>
             <Navbar title={'Todo App'}/>
             <View style={styles.container}>
-                <AddTodo onSubmit={addTodo}/>
-
-                <FlatList
-                    keyExtractor={item => item.id}
-                    data={todos}
-                    renderItem={({item}) => (<Todo todo={item} onRemove={removeTodo}/>)}
+                <MainScreen addTodo={addTodo} todos={todos} removeTodo={removeTodo}
                 />
-
-                {/*<ScrollView>*/}
-                {/*    <View>*/}
-                {/*        {*/}
-                {/*            todos.map(todo => (<Todo todo={todo} key={todo.id}/>))*/}
-                {/*        }*/}
-                {/*    </View>*/}
-                {/*</ScrollView>*/}
             </View>
         </View>
     );
