@@ -9,7 +9,8 @@ export default function App() {
     const [todoId, setTodoId] = useState('2');
     const [todos, setTodos] = useState([
         {id: '1', title: 'Выучить React'},
-        {id: '2', title: 'Выучить React Native'}
+        {id: '2', title: 'Выучить React Native'},
+        {id: '3', title: 'Написать приложение'},
     ]);
 
     const addTodo = (title) => {
